@@ -98,7 +98,7 @@ function scrollActive(){
     sections.forEach(current =>{
         const sectionHeight = current.offsetHeight
         const sectionTop = current.offsetTop - 50;
-        sectionId = current.getAttribute('id')
+        const sectionId = current.getAttribute('id')
 
         if(scrollY > sectionTop && scrollY <= sectionTop + sectionHeight){
             document.querySelector('.nav__menu a[href*=' + sectionId + ']').classList.add('active-link')
@@ -139,19 +139,27 @@ if (selectedTheme) {
   themeButton.classList[selectedIcon === 'uil-moon' ? 'add' : 'remove'](iconTheme)
 }
 
+function checkTheme (){
+   if (document.body.classList.contains(darkTheme) === true){
+    document.getElementById("imgClickAndChange").src = "assets/img/GRANIER-Hugo2.png"
+}
+else if (document.body.classList.contains(darkTheme) === false){
+    document.getElementById("imgClickAndChange").src = "assets/img/GRANIER-Hugo.png"
+} 
+}
+
+
 themeButton.addEventListener('click', () => {
     document.body.classList.toggle(darkTheme)
     themeButton.classList.toggle(iconTheme)
 
     //console.log(document.body.classList.contains(darkTheme))
 
-    if (document.body.classList.contains(darkTheme) === true){
-        document.getElementById("imgClickAndChange").src = "assets/img/GRANIER-Hugo2.png"
-    }
-    else if (document.body.classList.contains(darkTheme) === false){
-        document.getElementById("imgClickAndChange").src = "assets/img/GRANIER-Hugo.png"
-    }
+    checkTheme()
 
     localStorage.setItem('selected-theme', getCurrentTheme())
     localStorage.setItem('selected-icon', getCurrentIcon())
 })
+checkTheme()
+
+
