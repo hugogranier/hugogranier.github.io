@@ -148,7 +148,6 @@ else if (document.body.classList.contains(darkTheme) === false){
 } 
 }
 
-
 themeButton.addEventListener('click', () => {
     document.body.classList.toggle(darkTheme)
     themeButton.classList.toggle(iconTheme)
@@ -160,6 +159,5 @@ themeButton.addEventListener('click', () => {
     localStorage.setItem('selected-theme', getCurrentTheme())
     localStorage.setItem('selected-icon', getCurrentIcon())
 })
+
 checkTheme()
-
-
